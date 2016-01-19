@@ -1,16 +1,16 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "70A81438A9441BF3D7DAB61A492A37C8FE26E4BC",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "A416C5F55E358524EED2DA26E3F4871956EFFF70",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "70A81438A9441BF3D7DAB61A492A37C8FE26E4BC" : 0,
-    "66506CEC7F2C247131D2C5334CF891CC023136D2" : 0
+    "66506CEC7F2C247131D2C5334CF891CC023136D2" : 0,
+    "A416C5F55E358524EED2DA26E3F4871956EFFF70" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DCC14413-CD7C-4E72-897C-4B41A4A97EFF",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "70A81438A9441BF3D7DAB61A492A37C8FE26E4BC" : "MovieViewer\/",
-    "66506CEC7F2C247131D2C5334CF891CC023136D2" : "MovieViewer\/MovieViewer\/"
+    "66506CEC7F2C247131D2C5334CF891CC023136D2" : "MovieViewer\/MovieViewer\/",
+    "A416C5F55E358524EED2DA26E3F4871956EFFF70" : "MovieViewer\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "MovieViewer",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -24,7 +24,7 @@
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/bry3133\/Week-1-MovieViewer.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "70A81438A9441BF3D7DAB61A492A37C8FE26E4BC"
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A416C5F55E358524EED2DA26E3F4871956EFFF70"
     }
   ]
 }

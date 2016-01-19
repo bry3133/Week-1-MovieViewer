@@ -130,6 +130,11 @@ class MoviesViewController: UIViewController, UISearchBarDelegate, UICollectionV
         })
         
         }
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.blueColor()
+        cell.selectedBackgroundView = backgroundView
+        
         return cell
             
     }
@@ -181,7 +186,7 @@ class MoviesViewController: UIViewController, UISearchBarDelegate, UICollectionV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let cell = sender as! UICollectionViewCell
         let indexPath = collectionView.indexPathForCell(cell)
-        let movie = movies![indexPath!.row]
+        let movie = filteredData![indexPath!.row]
         
         let detailViewController = segue.destinationViewController as! DetailViewController
         detailViewController.movie = movie
