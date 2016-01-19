@@ -36,7 +36,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="NXh-Vm-Uyg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="97" height="134"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="155" height="214"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -52,9 +52,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Llr-GX-lh4" appends="YES" id="map-fI-Yp8"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="1Jm-q0-9zq"/>
                     <connections>
@@ -63,24 +60,59 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Llr-GX-lh4">
-                    <connections>
-                        <action selector="onTap:" destination="BYZ-38-t0r" id="q7y-i7-21s"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="606" y="289"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="GHd-8K-0wS">
             <objects>
-                <viewController id="WCG-7T-nXm" sceneMemberID="viewController">
+                <viewController id="WCG-7T-nXm" customClass="DetailViewController" customModule="MovieViewer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GIX-5r-brU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Gfl-OT-bMv">
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <view alpha="0.80000000000000004" contentMode="scaleToFill" id="TH2-9j-MuX">
+                                        <rect key="frame" x="0.0" y="538" width="320" height="295"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4sd-51-TSX">
+                                                <rect key="frame" x="8" y="30" width="304" height="23"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lwk-ai-k8q">
+                                                <rect key="frame" x="8" y="61" width="304" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="WSf-ZQ-eFm">
+                                        <rect key="frame" x="0.0" y="-20" width="320" height="560"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="rQn-PR-JY6"/>
+                    <connections>
+                        <outlet property="infoView" destination="TH2-9j-MuX" id="abt-eV-Y5g"/>
+                        <outlet property="overviewLabel" destination="Lwk-ai-k8q" id="Hnf-ri-Om5"/>
+                        <outlet property="posterImageView" destination="WSf-ZQ-eFm" id="Wdn-xQ-C7u"/>
+                        <outlet property="scrollView" destination="Gfl-OT-bMv" id="DJn-fL-Vfr"/>
+                        <outlet property="titleLabel" destination="4sd-51-TSX" id="dFf-Jf-r1G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yiY-si-7M3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,7 +121,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Ya1-Sq-W18">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iR2-2d-isq" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MoviesNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="iR2-2d-isq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OY2-mG-rDe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

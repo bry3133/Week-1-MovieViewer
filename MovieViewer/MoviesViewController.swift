@@ -10,7 +10,7 @@ import UIKit
 import AFNetworking
 import MBProgressHUD
 
-class MoviesViewController: UIViewController, UISearchBarDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+class MoviesViewController: UIViewController, UISearchBarDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -18,6 +18,7 @@ class MoviesViewController: UIViewController, UISearchBarDelegate, UICollectionV
     var movies: [NSDictionary]?
     var refreshControl: UIRefreshControl!
     var filteredData: [NSDictionary]?
+    var endpoint: String = ""
     
     func loadDataFromNetwork(request: NSURLRequest!) {
         
@@ -42,12 +43,11 @@ class MoviesViewController: UIViewController, UISearchBarDelegate, UICollectionV
         
         //tableView.dataSource = self
         //tableView.delegate = self
-        collectionView.delegate = self
         searchBar.delegate = self
         collectionView.dataSource = self
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(URL: url!)
         let session = NSURLSession(
             configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
@@ -81,9 +81,6 @@ class MoviesViewController: UIViewController, UISearchBarDelegate, UICollectionV
         // Dispose of any resources that can be recreated.
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("Selected cell number: \(indexPath.row)")
-    }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if let filteredData = filteredData {
@@ -100,9 +97,13 @@ class MoviesViewController: UIViewController, UISearchBarDelegate, UICollectionV
 
         //let title = movie["title"] as! String
         //let overview = movie["overview"] as! String
-        let posterPath = movie["poster_path"] as! String
+        //cell.titleLabel.text = title
+        //cell.overviewLabel.text = overview
         
         let baseUrl = "http://image.tmdb.org/t/p/w500"
+        
+        if let posterPath = movie["poster_path"] as? String {
+            
         
         let imageRequest = NSURLRequest(URL: NSURL(string: baseUrl + posterPath)!)
         
@@ -128,13 +129,18 @@ class MoviesViewController: UIViewController, UISearchBarDelegate, UICollectionV
                 // do something for the failure condition
         })
         
-        //cell.titleLabel.text = title
-        //cell.overviewLabel.text = overview
-        
-        print("row \(indexPath.row)")
+        }
         return cell
+            
     }
-    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         filteredData = searchText.isEmpty ? movies : movies!.filter({(movie: NSDictionary) -> Bool in
             if let title = movie["title"] as? String {
@@ -168,18 +174,25 @@ class MoviesViewController: UIViewController, UISearchBarDelegate, UICollectionV
         })
     }
     
-    @IBAction func onTap(sender: AnyObject) {
-        view.endEditing(true)
-    }
     
-    /*
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let cell = sender as! UICollectionViewCell
+        let indexPath = collectionView.indexPathForCell(cell)
+        let movie = movies![indexPath!.row]
+        
+        let detailViewController = segue.destinationViewController as! DetailViewController
+        detailViewController.movie = movie
+        
+        
+        
+        
+        print("prepare for segue called")
     // Get the new view controller using segue.destinationViewController.
     // Pass the selected object to the new view controller.
     }
-    */
+    
     
 }
