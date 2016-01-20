@@ -20,24 +20,6 @@ class MoviesViewController: UIViewController, UISearchBarDelegate, UICollectionV
     var filteredData: [NSDictionary]?
     var endpoint: String = ""
     
-    func loadDataFromNetwork(request: NSURLRequest!) {
-        
-        let session = NSURLSession.sharedSession()
-        
-        // Display HUD right before next request is made
-        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        
-        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
-            completionHandler: { (data, response, error) in
-                
-            // Hide HUD once network request comes back (must be done on main UI thread)
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
-                
-                
-        });
-        task.resume()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,6 +36,7 @@ class MoviesViewController: UIViewController, UISearchBarDelegate, UICollectionV
             delegate:nil,
             delegateQueue:NSOperationQueue.mainQueue()
         )
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
@@ -65,6 +48,8 @@ class MoviesViewController: UIViewController, UISearchBarDelegate, UICollectionV
                             self.movies = responseDictionary ["results"]as! [NSDictionary]
                             self.filteredData = self.movies
                             self.collectionView.reloadData()
+                            
+                            MBProgressHUD.hideHUDForView(self.view, animated: true)
                     }
                 }
         });

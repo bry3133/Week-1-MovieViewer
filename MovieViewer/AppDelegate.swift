@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let storybord = UIStoryboard(name: "Main", bundle: nil)
         
+        let selectedColor = UIColor(colorLiteralRed: 0.4235, green: 0.99215, blue: 1, alpha: 1)
+        let unselectedColor = UIColor(colorLiteralRed: 0.31, green: 0.729, blue: 0.737, alpha: 1)
+        
         let nowPlayingNavigationController = storybord.instantiateViewControllerWithIdentifier("MoviesNavigationController") as! UINavigationController
         let nowPlayingViewController = nowPlayingNavigationController.topViewController as! MoviesViewController
         nowPlayingViewController.endpoint = "now_playing"
@@ -33,7 +36,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         topRatedNavigationController.tabBarItem.image = UIImage(named: "top_rated")
         
         let tabBarController = UITabBarController()
+        
+        
+        tabBarController.tabBar.barTintColor = UIColor(colorLiteralRed: 1, green: 0.44, blue: 0.439, alpha: 1)
+        
         tabBarController.viewControllers = [nowPlayingNavigationController, topRatedNavigationController]
+        
+        for item in tabBarController.tabBar.items! {
+            item.image = item.selectedImage?.imageWithColor(unselectedColor).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+            
+            let attributes = [NSForegroundColorAttributeName: unselectedColor]
+            let selectedAttributes = [NSForegroundColorAttributeName: selectedColor]
+            item.setTitleTextAttributes(attributes, forState: UIControlState.Normal)
+            item.setTitleTextAttributes(selectedAttributes, forState: UIControlState.Selected)
+            
+        }
+
         
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
@@ -63,6 +81,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+}
 
+extension UIImage {
+    func imageWithColor(color1: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        color1.setFill()
+        
+        let context = UIGraphicsGetCurrentContext()
+        CGContextTranslateCTM(context, 0, self.size.height)
+        CGContextScaleCTM(context, 1.0, -1.0);
+        CGContextSetBlendMode(context, CGBlendMode.Normal)
+        
+        let rect = CGRectMake(0, 0, self.size.width, self.size.height) as CGRect
+        CGContextClipToMask(context, rect, self.CGImage)
+        CGContextFillRect(context, rect)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext() as UIImage
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
 }
 
