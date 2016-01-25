@@ -54,11 +54,11 @@ Describe any challenges encountered while building the app.
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-# Project 2 - *Movie Viewer*
+# Project 2 - *Flicks*
 
-**Name of your app** is a movies app displaying box office and top rental DVDs using [The Movie Database API](http://docs.themoviedb.apiary.io/#).
+**Movie2Go** is a movies app displaying box office and top rental DVDs using [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **4** hours spent in total
+Time spent: **8** hours spent in total
 
 ## User Stories
 
@@ -70,24 +70,27 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
-- [ ] Customize the navigation bar.
+- [x] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
+- [x] Customize the navigation bar.
 
 The following **additional** features are implemented:
 
 - [ ] List anything else that you can get done to improve the app functionality!
+- [x] Customize the tab bar programmatically
+- [x]Changed the color for when a movie poster is selected
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/vX9H8aS.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/DZuA9v0.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+    I tried to get a scroll view that when over the image view like in the video in the assignmnet. However, I did not know how to actually get the info view to move up. The computer recongized the swipe but did not do any motion. Also, gettign to change the color of the tab bar was diffcult because I had to look up the programming code for it. The tab is not on the storyboard so it was hard to know if you were doing it right as well.
 
 ## License
 
