@@ -77,7 +77,8 @@ The following **additional** features are implemented:
 
 - [ ] List anything else that you can get done to improve the app functionality!
 - [x] Customize the tab bar programmatically
-- [x]Changed the color for when a movie poster is selected
+- [x] Changed the color for when a movie poster is selected
+- [x] Added a title label for my collection view cells
 
 ## Video Walkthrough 
 
